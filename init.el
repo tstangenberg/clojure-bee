@@ -1,13 +1,13 @@
 ;;
 ;; A Emacs init.el that aims at providing a comprehensive Clojure
 ;; development environment that is easily installed. It SHOULD work
-;; on OSx and Linux without any further modification. I don't know 
-;; about windows. 
+;; on OSx and Linux without any further modification. I don't know
+;; about windows.
 ;;
 ;; The following emacs packages will be installed the first time emacs
 ;; is run:
 ;; * el-get (used to install and configure any other package)
-;; * helm 
+;; * helm
 ;; * clojure-mode & clojure-test-mode
 ;; * nrepl
 ;; * ac-nrepl
@@ -16,17 +16,17 @@
 ;; * auto-complete
 ;; * recentf
 ;; * eproject
-;; * auto-complete 
+;; * auto-complete
 ;;
 ;; For established key bindings see the end of this file. Bindings for
-;; clojure-mode and nrepl see https://github.com/technomancy/clojure-mode, 
+;; clojure-mode and nrepl see https://github.com/technomancy/clojure-mode,
 ;; or https://github.com/clojure-emacs/nrepl.el.
-;; 
+;;
 ;; TODOs:
 ;;  * enable ritz-nrepl (fails on my machine [OSx] currently)
 ;;
-;; This comes with no warranty. Use at your own risk. 
-;; 
+;; This comes with no warranty. Use at your own risk.
+;;
 
 ;; Only show errors
 ;;(setq warning-minimum-level :error)
@@ -88,12 +88,12 @@
 ;; Emacs basics
 ;;
 
-;; Launching emacs-server (server-start) below is required if you want to 
-;; open files from the command line. 
+;; Launching emacs-server (server-start) below is required if you want to
+;; open files from the command line.
 (setq server-name "emacs-server")
 (server-start)
 
-;; And that's what I put in my ~/.zshrc to run emacs when typing 
+;; And that's what I put in my ~/.zshrc to run emacs when typing
 ;; 'e <some-file>' on the command line.
 ;; ```
 ;; _editor() {
@@ -150,7 +150,7 @@
       query-replace-highlight t)
 
 ;; Enable y/n answers to yes/no
-(fset 'yes-or-no-p 'y-or-n-p)            
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; When to split the srceen
 (setq split-width-threshold 120)
@@ -205,7 +205,7 @@ FILE has been displayed."
 ;; El-get.el
 ;;
 
-;; Use el-get to manage packages. I prefer it over package.el because 
+;; Use el-get to manage packages. I prefer it over package.el because
 ;; it can install from nearly any source, including github.
 
 (add-to-list 'load-path (with-conf-dir "el-get/el-get"))
@@ -254,7 +254,7 @@ FILE has been displayed."
                         ;; Make them global
                         (global-rainbow-delimiters-mode)))
 
-        ;; It's not enabled by default. I'm not yet accustomed to 
+        ;; It's not enabled by default. I'm not yet accustomed to
         ;; paredit. Maybe due to vim?
         ;;(:name paredit)
 
@@ -264,14 +264,14 @@ FILE has been displayed."
                         (global-undo-tree-mode)))
 
         ;; Helm is for navigating everywhere. Similar to Sublime's Goto Anywhere but
-        ;; IMHO more powerfull. Provides sources for 
-        ;; e.g. eproject, anything, buffers, files, ... 
+        ;; IMHO more powerfull. Provides sources for
+        ;; e.g. eproject, anything, buffers, files, ...
         (:name helm
                :features (helm-config
                           helm-files))
 
         ;; Complete as you type with overlays
-        (:name auto-complete        
+        (:name auto-complete
                :features (auto-complete)
                :after (progn
                         (setq ac-sources
@@ -378,8 +378,8 @@ my/my-keys-prefix."
 (my/my-keys-set-prefixed "eo"   'eproject-revisit-project)
 (my/my-keys-set-prefixed "eK"   'eproject-kill-project-buffers)
 
-;; This brings up a buffer with only files from within the 
-;; active eproject 
+;; This brings up a buffer with only files from within the
+;; active eproject
 (my/my-keys-set-prefixed "ep"
                          '(lambda() (interactive)
                             (helm
@@ -433,3 +433,10 @@ my/my-keys-prefix."
                                ;;helm-c-source-emacs-variables
                                ;;helm-c-source-emacs-functions
                                ))))
+
+;; Keep track of customizations in its own file
+(setq custom-file
+      (with-conf-dir "customize.el"))
+(touch custom-file)
+(load custom-file)
+
