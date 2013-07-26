@@ -1,5 +1,5 @@
-Clojure-bee - A Clojure IDE based on Emacs
-==========================================
+Clojure-bee
+===========
 
 Clojure-bee is a set of packages turning Emacs in a Clojure development environment. 
 
