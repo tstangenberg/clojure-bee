@@ -7,7 +7,7 @@ It has been tested on OSx and Linux but not Windows.
 
 Important
 ---------
-Note that this project is still in its infancy and really is far from being complete. 
+This project is still in its infancy and really is far from being complete. 
 Please let me know if something does not work for you and I'll try my best to help
 you out, though I'm neither an Emacs nor a Clojure expert. 
 
