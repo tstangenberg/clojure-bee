@@ -3,8 +3,6 @@ Clojure-bee
 
 Clojure-bee is a set of packages turning Emacs into a Clojure development environment. 
 
-It has been tested on OSx and Linux but not Windows. 
-
 Important
 ---------
 This project is still in its infancy and really is far from being complete. 
