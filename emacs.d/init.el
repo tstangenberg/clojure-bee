@@ -31,6 +31,12 @@
 ;; Only show errors
 ;;(setq warning-minimum-level :error)
 
+;; We want to run multiple emacs configuration simultaneously.
+;; http://stackoverflow.com/questions/17483598/maintaining-multiple-emacs-configurations-at-the-same-time
+;; http://stackoverflow.com/questions/4088681/get-path-to-current-emacs-script-file-when-loaded-with-l-parameter
+(setq user-emacs-directory
+      (file-name-directory load-file-name))
+
 ;;-----------------------------------------------------------------------
 ;; init.el is system dependant. Provide functions to check for system
 ;; type.
@@ -57,7 +63,8 @@
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
-(when window-system (set-exec-path-from-shell-PATH))
+(if (system-type-is-darwin)
+    (when window-system (set-exec-path-from-shell-PATH)))
 
 ;;-----------------------------------------------------------------------
 ;; Helpers to resolve emacs' config dir and some other default
@@ -90,7 +97,7 @@
 
 ;; Launching emacs-server (server-start) below is required if you want to
 ;; open files from the command line.
-(setq server-name "emacs-server")
+(setq server-name "clojure-bee-emacs")
 (server-start)
 
 ;; And that's what I put in my ~/.zshrc to run emacs when typing
@@ -127,11 +134,21 @@
 (setq backup-directory-alist
       `(("." . ,(with-conf-dir "bak"))))
 
-;; No toolbar please!
-(tool-bar-mode -1)
-
 ;; Disable spash-screen at startup
 (setq inhibit-splash-screen t)
+
+;; Before attempting to position the window and disabling the tool-bar
+;; make sure we're running emacs on a window manager, e.g. EmacsX
+;; See http://www.dotemacs.de/multiemacs.html
+(if (boundp 'tool-bar-mode)
+    (progn
+      (tool-bar-mode -1)
+      ;; Position and size the windows on startup
+      ;;(add-to-list 'default-frame-alist '(left . 0))
+      ;;(add-to-list 'default-frame-alist '(top . 0))
+      ;;(add-to-list 'default-frame-alist '(height . 55))
+      ;;(add-to-list 'default-frame-alist '(width . 205))))
+      ))
 
 ;; Use space not tab
 (setq-default indent-tabs-mode nil)
@@ -245,14 +262,14 @@ FILE has been displayed."
 
         ;; A must when working with lisps
         (:name rainbow-delimiters
-               :website "https://github.com/jlr/rainbow-delimiters"
-               :description "rainbow parentheses"
-               :type git
-               :url "https://github.com/jlr/rainbow-delimiters"
-               :features (rainbow-delimiters)
-               :after (progn
-                        ;; Make them global
-                        (global-rainbow-delimiters-mode)))
+              :website "https://github.com/jlr/rainbow-delimiters"
+              :description "rainbow parentheses"
+              :type git
+              :url "https://github.com/jlr/rainbow-delimiters"
+              :features (rainbow-delimiters)
+              :after (progn
+                       ;; Make them global
+                       (global-rainbow-delimiters-mode)))
 
         ;; It's not enabled by default. I'm not yet accustomed to
         ;; paredit. Maybe due to vim?
@@ -439,4 +456,3 @@ my/my-keys-prefix."
       (with-conf-dir "customize.el"))
 (touch custom-file)
 (load custom-file)
-
