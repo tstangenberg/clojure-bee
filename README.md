@@ -35,10 +35,10 @@ You can now run `clojure-bee` by invoking `<path-to-clojure-bee>/clojure-bee.sh`
     $ clojure-bee/clojure-bee.sh
 
 On the first run Emacs will download and install all the dependencies. That usually takes
-a while. That's it! 
+a while.
 
 The configuration comes with customized key bindings. The bindings are shown at 
-the bottom of the `~/.emacs.d/init.el` file. In fact it is reccomended to read through
+the bottom of the `<path-to-clojure-bee/emacs.d/init.el` file. In fact it is reccomended to read through
 all of `init.el`. It provides details on many of the configuration tweaks.  
 
 Happy coding!
