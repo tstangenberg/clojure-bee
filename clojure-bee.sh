@@ -22,12 +22,13 @@ case "$(uname)" in
         ;;
     # This really is the fallback case.
     *)
-        EMACS="$(which emacs)"
+        EMACS="$(which xemacs)"
 esac
 
 if [ ! -f $EMACS ]; then
-    echo "Failed to find Emacs binary."
-    echo "Consider fixing '$0' and commiting your changes back to the clojure-bee"
+    echo "Failed to find XEmacs binary."
+    echo "Consider fixing this in '$0'"
+    echo "and commiting your changes back to the clojure-bee"
     echo "repository!"
     exit 1
 fi
