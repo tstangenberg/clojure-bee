@@ -13,30 +13,35 @@ Any feedback is of course well appreciated!
 
 Prerequisits
 ------------
-* Emacs 24 (and possibly other version), [Emacs For OSx](http://emacsformacosx.com/)
+* Emacs 24 (TODO: is X Emacs required for *nix? Raindbow delimiters can not be loaded if 
+  not running under a window manager): 
+  * [Emacs For OSx](http://emacsformacosx.com/)
+  * [XEmacs](http://www.xemacs.org/)
+  * ...
 * [lein](https://github.com/technomancy/leiningen) must be installed on your system
 
 
 Installation
 ------------
-These installation instructions are for Linux/OSx only. 
+These installation instructions are for Linux/OSx only.  
 
-First, backup your current Emacs home directory, usually `~/.emacs.d`. 
-
-    $ mv ~./.emacs.d ~/.emacs.d.bak
-
-Now make sure your in your home folder, clone [clojure-bee](https://github.com/instilled/clojure-bee) 
-and rename the folder to `.emacs.d`. 
+Clone [clojure-bee](https://github.com/instilled/clojure-bee).
 
     $ cd ~
     $ git@github.com:instilled/clojure-bee.git
-    $ mv clojure-bee .emacs.d
+    
+You can now run `clojure-bee` by invoking `<path-to-clojure-bee>/clojure-bee.sh`. 
 
-That's it! Happy coding!
+    $ clojure-bee/clojure-bee.sh
+
+On the first run Emacs will download and install all the dependencies. That usually takes
+a while. That's it! 
 
 The configuration comes with customized key bindings. The bindings are shown at 
 the bottom of the `~/.emacs.d/init.el` file. In fact it is reccomended to read through
 all of `init.el`. It provides details on many of the configuration tweaks.  
+
+Happy coding!
 
 TODOs
 -----
