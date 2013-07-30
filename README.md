@@ -17,7 +17,6 @@ Prerequisits
   not running under a window manager): 
   * [Emacs For OSx](http://emacsformacosx.com/)
   * [XEmacs](http://www.xemacs.org/)
-  * ...
 * [lein](https://github.com/technomancy/leiningen) must be installed on your system
 
 
@@ -45,6 +44,5 @@ Happy coding!
 
 TODOs
 -----
-* Add documentation
-* Test on Windows
-* ... more to come
+* More documentation
+* Test on Windows/make it runnable on windows 
