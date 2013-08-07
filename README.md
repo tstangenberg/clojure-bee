@@ -1,7 +1,22 @@
 Clojure-bee
 ===========
 
-Clojure-bee is a set of packages turning Emacs into a Clojure development environment.
+Clojure-bee is a set of packages turning Emacs into a Clojure development environment. 
+It installs and configures the following (configured) Emacs packages:
+
+* clojure-mode & clojure-test-mode (well, it's about clojure)
+* ace-jum-mode (makes navigating a buffer a swift)
+* nrepl (the famous nrepl)
+* ac-nrepl (auto-complete for clojure)
+* nrepl-inspect (inspecting clojure objects)
+* undo-tree (it's almost like git for your undo/redo history)
+* auto-complete (required by ac-nrepl)
+* eproject (create projects!)
+
+`clojure-mode`'s jump to test source and back - `clojure-test-for-fn` and `clojure-test-implementation-for-fn` - 
+use a customized version that will look for sources in `maven` like project structure.
+If you don't like this you can use the orginal function that come with `clojure-mode` and `clojure-test-mode` 
+by uncommenting the respective lines in `<clojure-bee-home>/emacs.d/el-get-clojure-recipes.el`. 
 
 Note
 ---------
@@ -14,7 +29,7 @@ Any feedback is of course well appreciated!
 Prerequisits
 ------------
 * Emacs 24 (TODO: is X Emacs required for *nix? Raindbow delimiters can not be loaded if
-  not running under a window manager):
+  not running under a window manager, at least in OSx):
   * [Emacs For OSx](http://emacsformacosx.com/)
   * [XEmacs](http://www.xemacs.org/)
 * [lein](https://github.com/technomancy/leiningen) must be installed on your system
@@ -46,3 +61,4 @@ TODOs
 -----
 * More documentation
 * Test on Windows/make it runnable on windows
+* Integrate ritz-nrepl (ritz didn't work on my OS x machine)
