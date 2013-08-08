@@ -97,7 +97,7 @@
 
 ;; Launching emacs-server (server-start) below is required if you want to
 ;; open files from the command line.
-(setq server-name "clojure-bee-emacs")
+(setq server-name "clojure-bee-emacs-server")
 (server-start)
 
 ;; And that's what I put in my ~/.zshrc to run emacs when typing
@@ -106,7 +106,7 @@
 ;; _editor() {
 ;;   $EMACS_HOME/bin/emacsclient \
 ;;            --no-wait \
-;;            --socket-name=emacs-server \
+;;            --socket-name=clojure-bee-emacs-server \
 ;;            --alternate-editor=$EMACS_HOME/Emacs \
 ;;            $@ &
 ;; }
@@ -416,11 +416,7 @@ my/my-keys-prefix."
                              :prompt "Switch to: "
                              :candidate-number-limit 10
                              :sources
-                             '(
-                               ;;anything-c-source-recentf
-                               helm-c-source-recentf
-
-                               ;;anything-c-source-files-in-current-dir+
+                             '(helm-c-source-recentf
                                helm-c-source-files-in-current-dir
 
                                ;;anything-c-source-eproject-buffers
