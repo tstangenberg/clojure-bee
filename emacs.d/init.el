@@ -300,13 +300,7 @@ FILE has been displayed."
 
         ;; Moving around with the keyboard... oh yeah.
         (:name ace-jump-mode
-               :features (ace-jump-mode)
-               :after (progn
-                        ;; Make moving around a swift.
-                        (global-set-key (kbd "SPC") 'evil-ace-jump-char-mode)
-                        ;(evil-global-set-key 'normal (kbd "M-SPC") 'evil-ace-jump-word-mode)
-                        (global-set-key (kbd "M-SPC") 'evil-ace-jump-line-mode)))
-
+               :features (ace-jump-mode))
 
         ;; Eprojects lets you define your own projects.
         (:name eproject
@@ -377,23 +371,33 @@ my/my-keys-prefix."
     (setq key (pop bindings)
           def (pop bindings))))
 
-
-(my/my-keys-set-prefixed "u"    'undo-tree-visualize)
-(my/my-keys-set-prefixed "cw"   'whitespace-cleanup)
-
-(my/my-keys-set-prefixed "tn"  'next-multiframe-window)
-(my/my-keys-set-prefixed "tp"  'previous-multiframe-window)
-
-(my/my-keys-set-prefixed "C-,"  'execute-extended-command)
+;; Navigation
+;; Make moving around a swift.
+(global-set-key (kbd "C-SPC") 'ace-jump-char-mode)
+;;(global-set-key (kbd "C-M-SPC")  'ace-jump-word-mode)
+(global-set-key (kbd "M-SPC") 'ace-jump-line-mode)
 
 (my/my-keys-set-prefixed "f"    'ido-find-file-other-window)
 (my/my-keys-set-prefixed "C-f"  'ido-find-file)
 (my/my-keys-set-prefixed "M-f"  'ffap)
 
+(my/my-keys-set-prefixed "C-t"  'next-multiframe-window)
+(my/my-keys-set-prefixed "C-p"  'previous-multiframe-window)
+
+(my/my-keys-set-prefixed "u"    'undo-tree-visualize)
+
+
+(my/my-keys-set-prefixed "C-,"  'execute-extended-command)
+
+;; Eproject navigation
 (my/my-keys-set-prefixed "ei"   'eproject-ibuffer)
 (my/my-keys-set-prefixed "ef"   'eproject-find-file)
 (my/my-keys-set-prefixed "eo"   'eproject-revisit-project)
 (my/my-keys-set-prefixed "eK"   'eproject-kill-project-buffers)
+
+;; Regexp search & navigate in current buffer
+(my/my-keys-set-prefixed "af"   'helm-find-files)
+(my/my-keys-set-prefixed "ar"   'helm-regexp)
 
 ;; This brings up a buffer with only files from within the
 ;; active eproject
@@ -404,23 +408,6 @@ my/my-keys-prefix."
                              :candidate-number-limit 100
                              :sources
                              '(helm-eproject-source))))
-
-;; El-get, my hero
-(my/my-keys-set-prefixed "pl"   'el-get-list-packages)
-(my/my-keys-set-prefixed "pd"   'el-get-describe)
-(my/my-keys-set-prefixed "pc"   'el-get-cd)
-(my/my-keys-set-prefixed "pI"   'el-get-install)
-(my/my-keys-set-prefixed "pi"   'el-get-init)
-(my/my-keys-set-prefixed "pu"   'el-get-update)
-(my/my-keys-set-prefixed "pR"   'el-get-remove)
-
-;; Programming related
-(my/my-keys-set-prefixed "cj"   'nrepl-jack-in)
-(my/my-keys-set-prefixed "cc"   'comment-or-uncomment-region)
-
-(my/my-keys-set-prefixed "af"   'helm-find-files)
-(my/my-keys-set-prefixed "ar"   'helm-regexp)
-(my/my-keys-set-prefixed "at"   'helm-my-etags-tags-table-list-at-point-source)
 
 ;; Binds a navigation toolbar
 (my/my-keys-set-prefixed "b"
@@ -437,19 +424,32 @@ my/my-keys-prefix."
                                helm-c-source-files-in-current-dir
 
                                ;;anything-c-source-eproject-buffers
-                               ;; 21.03.2012: eproject not yet updated
-                               ;; to use helm insteag of anything
-
                                ;;anything-c-source-buffers+ ; TODO try out
+
                                helm-c-source-buffers-list
 
                                ;;anything-c-source-bookmarks
                                ;;helm-c-source-bookmarks
 
-                               ;; These two are neat, but too slow on my current setup.
                                ;;helm-c-source-emacs-variables
                                ;;helm-c-source-emacs-functions
                                ))))
+
+;; El-get, my hero
+(my/my-keys-set-prefixed "pl"   'el-get-list-packages)
+(my/my-keys-set-prefixed "pd"   'el-get-describe)
+(my/my-keys-set-prefixed "pc"   'el-get-cd)
+(my/my-keys-set-prefixed "pI"   'el-get-install)
+(my/my-keys-set-prefixed "pi"   'el-get-init)
+(my/my-keys-set-prefixed "pu"   'el-get-update)
+(my/my-keys-set-prefixed "pR"   'el-get-remove)
+
+(my/my-keys-set-prefixed "cw"   'whitespace-cleanup)
+
+;; Programming related
+(my/my-keys-set-prefixed "cj"   'nrepl-jack-in)
+(my/my-keys-set-prefixed "cc"   'comment-or-uncomment-region)
+
 
 ;; Keep track of customizations in its own file
 (setq custom-file
