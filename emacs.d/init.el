@@ -401,6 +401,7 @@ my/my-keys-prefix."
 
 ;; This brings up a buffer with only files from within the
 ;; active eproject
+(my/my-keys-set-prefixed "p" 'helm-eproject)
 (my/my-keys-set-prefixed "ep"
                          '(lambda() (interactive)
                             (helm
@@ -432,13 +433,13 @@ my/my-keys-prefix."
                                ))))
 
 ;; El-get, my hero
-(my/my-keys-set-prefixed "pl"   'el-get-list-packages)
-(my/my-keys-set-prefixed "pd"   'el-get-describe)
-(my/my-keys-set-prefixed "pc"   'el-get-cd)
-(my/my-keys-set-prefixed "pI"   'el-get-install)
-(my/my-keys-set-prefixed "pi"   'el-get-init)
-(my/my-keys-set-prefixed "pu"   'el-get-update)
-(my/my-keys-set-prefixed "pR"   'el-get-remove)
+;(my/my-keys-set-prefixed "pl"   'el-get-list-packages)
+;(my/my-keys-set-prefixed "pd"   'el-get-describe)
+;(my/my-keys-set-prefixed "pc"   'el-get-cd)
+;(my/my-keys-set-prefixed "pI"   'el-get-install)
+;(my/my-keys-set-prefixed "pi"   'el-get-init)
+;(my/my-keys-set-prefixed "pu"   'el-get-update)
+;(my/my-keys-set-prefixed "pR"   'el-get-remove)
 
 (my/my-keys-set-prefixed "cw"   'whitespace-cleanup)
 
