@@ -444,7 +444,7 @@ my/my-keys-prefix."
 
 ;; Programming related
 (my/my-keys-set-prefixed "cj"   'nrepl-jack-in)
-(my/my-keys-set-prefixed "cc"   'comment-or-uncomment-region)
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
 
 ;; Keep track of customizations in its own file
