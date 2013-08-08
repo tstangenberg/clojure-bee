@@ -248,17 +248,7 @@ FILE has been displayed."
       '((:name color-theme-railscasts
                :depends (color-theme)
                :after (progn
-                        (require 'color-theme-railscasts)
-                        ;; cursor-color is overwritten by evil-mode with
-                        ;; "black" so we hardcode the railscast value
-                        ;; here. Note: This will persist even after changing
-                        ;; to a different theme as long as evil-mode is
-                        ;; active.
-                        (setq evil-default-cursor
-                              (list (or (frame-parameter nil 'cursor-color)
-                                        "#5A647E")
-                                    t))
-                        (color-theme-railscasts)))
+                        (require 'color-theme-railscasts)))
 
         ;; A must when working with lisps
         (:name rainbow-delimiters
